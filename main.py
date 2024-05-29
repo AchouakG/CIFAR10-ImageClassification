@@ -22,7 +22,7 @@ class_names = ['Plane', 'Car', 'Bird', ' Cat', 'Deer', 'Dog', 'Frog', 'Horse', '
 #     plt.imshow(training_images[i], cmap=plt.cm.binary)
 #     plt.xlabel(class_names[training_labels[i][0]])
 # plt.show()
-
+#888888888888888888888
 #we are getting the label of the particular image (the number) then we are passing it to as the index for the class list---> if the image label is 3 we're going to get cat
 training_images=training_images[:200000]
 training_labels=training_labels[:200000]
