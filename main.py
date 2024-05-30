@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tensorflow.keras import datasets, layers, models
 import tensorflow as tf
+
 #testing and training tuples
 
 (training_images, training_labels), (testing_images, testing_labels) = datasets.cifar10.load_data()
@@ -11,7 +12,7 @@ import tensorflow as tf
 training_images, testing_images = training_images / 255, testing_images / 255
 # the image_classifier.model fed to the network are not with a high resolution
 class_names = ['Plane', 'Car', 'Bird', ' Cat', 'Deer', 'Dog', 'Frog', 'Horse', 'Ship', 'Truck']
-# here i am using a 4x4 grid to visualize the dataset
+# here I am using a 4x4 grid to visualize the dataset
 # 4x4 grid with each iteration we are choosing a one of these places in the grid to place the next image
 
 #here is shows the image_classifier.model of each one of those ????
@@ -22,12 +23,12 @@ class_names = ['Plane', 'Car', 'Bird', ' Cat', 'Deer', 'Dog', 'Frog', 'Horse', '
 #     plt.imshow(training_images[i], cmap=plt.cm.binary)
 #     plt.xlabel(class_names[training_labels[i][0]])
 # plt.show()
-#888888888888888888888
+
 #we are getting the label of the particular image (the number) then we are passing it to as the index for the class list---> if the image label is 3 we're going to get cat
-training_images=training_images[:200000]
-training_labels=training_labels[:200000]
-testing_images= testing_images[:4000]
-testing_labels=testing_labels[:4000]
+training_images = training_images[:200000]
+training_labels = training_labels[:200000]
+testing_images = testing_images[:4000]
+testing_labels = testing_labels[:4000]
 
 # used to build or train the model for the neural network
 # model = models.Sequential()
@@ -50,24 +51,19 @@ testing_labels=testing_labels[:4000]
 # print(f"Accuracy: {accuracy}")
 #
 # model.save('image_classifier.keras')
-# i got
+# result is :
 # Loss: 0.8822863698005676
-# Accuracy: 0.7045000195503235 which is pretty good
+# Accuracy: 0.7045000195503235 which is pretty decent
 
 
-
-model = tf.keras.models.load_model('image_classifier.keras') # now it can be used to classify image_classifier.model from same category
+model = tf.keras.models.load_model('image_classifier.keras')  # now it can be used to classify image_classifier.model from same category
 img = cv.imread('cat.jpg')
-img= cv.cvtColor(img, cv.COLOR_BGR2RGB)#converting BGR to RGB
-# img = cv.resize(img, (32, 32))  # Resize to 32x32 pixels
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)  # converting BGR to RGB
+# img = cv.resize(img, (32, 32))  # Resize to 32x32 pixels in this case i passed already resized images
 # img = img / 255 # Normalize the image
-plt.imshow(img,cmap=plt.cm.binary)
-prediction = model.predict(np.array([img])/255)#we pass an img in a numpy array
+plt.imshow(img, cmap=plt.cm.binary)
+prediction = model.predict(np.array([img]) / 255)  # we pass an img in a numpy array
 
-index= np.argmax(prediction)
+index = np.argmax(prediction)
 print(f'Prediction is {class_names[index]}')
 plt.show()
-
-
-
-
