@@ -57,7 +57,7 @@ testing_labels = testing_labels[:4000]
 
 
 model = tf.keras.models.load_model('image_classifier.keras')  # now it can be used to classify image_classifier.model from same category
-img = cv.imread('cat.jpg')
+img = cv.imread('../cat.jpg')
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)  # converting BGR to RGB
 # img = cv.resize(img, (32, 32))  # Resize to 32x32 pixels in this case i passed already resized images
 # img = img / 255 # Normalize the image
